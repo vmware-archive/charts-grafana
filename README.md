@@ -36,9 +36,8 @@ chart and sizing your cluster.
 ### Cluster with Admission Controllers
 
 #### PodSecurityPolicy
-Currently the prometheus chart does not have pod security policies defined for
-most of its components. Hence, it will not install correctly on any cluster
-enforcing [`PodSecurityPolicy`][pod-sec-policy].
+The chart has `PodSecurityPolicy` enabled by default. See [here][pod-sec-policy] for more
+information.
 
 #### SecurityContextDeny
 The grafana deployment uses [PodSecurityContext] to configure the grafana
