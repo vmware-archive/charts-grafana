@@ -35,12 +35,19 @@ chart and sizing your cluster.
 
 ### Cluster with Admission Controllers
 
-_PodSecurityPolicy_
-Currently the prometheus chart does not have pod security policy defined for
+#### PodSecurityPolicy
+Currently the prometheus chart does not have pod security policies defined for
 most of its components. Hence, it will not install correctly on any cluster
-enforcing `PodSecurityPolicy`.
+enforcing [`PodSecurityPolicy`][pod-sec-policy].
 
-_SecurityContextDeny_
-The grafana deployment uses PodSecurityContext to configure grafana
-container user (UID: 472). This means that the grafana deployment will
-fail on any cluster with `SecurityContextDeny` enabled.
+#### SecurityContextDeny
+The grafana deployment uses [PodSecurityContext] to configure the grafana
+container to [run with user id 472]. This means that the grafana deployment
+will fail on any cluster with [`SecurityContextDeny`][security-context-deny]
+enabled.
+
+
+[PodSecurityContext]: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
+[run with user id 472]: http://docs.grafana.org/installation/docker/#migration-from-a-previous-version-of-the-docker-container-to-5-1-or-later
+[security-context-deny]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#securitycontextdeny
+[pod-sec-policy]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/
