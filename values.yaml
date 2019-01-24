@@ -8,7 +8,7 @@ datasource:
     name: "prometheus"
 
 prometheus:
-  nodeExporter:
+  rbac:
     podSecurityPolicy:
       enabled: true
   pushgateway:
