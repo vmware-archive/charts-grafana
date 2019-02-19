@@ -32,14 +32,12 @@ helm init --service-account tiller
 __Grafana__
 1. Create the port forward to the Grafana dashboard
     ```bash
-    kubectl port-forward deployment/cluster-health-grafana 3000:3000
---namespace observability
+    kubectl port-forward deployment/cluster-health-grafana 3000:3000 --namespace observability
     ```
 1. Retrieve the grafana dashboard password by running the following
     ```bash
     # Assuming you are on a Mac OSX
-    kubectl get secret cluster-health-grafana --namespace observability
---output json | jq -r '.data."admin-password"' | base64 --decode
+    kubectl get secret cluster-health-grafana --namespace observability --output json | jq -r '.data."admin-password"' | base64 --decode
     ```
 1. Open your browser window and go to http://localhost:3000
 1. Enter the username `admin` and the previously retreieved password.
@@ -47,8 +45,7 @@ __Grafana__
 __Prometheus__
 1. Create the port forward to the Prometheus dashboard
     ```
-    kubectl port-forward deployment/cluster-health-prometheus-server 9090:9090
---namespace observability
+    kubectl port-forward deployment/cluster-health-prometheus-server 9090:9090 --namespace observability
     ```
 1. Open your browser window and go to http://localhost:9090
 
