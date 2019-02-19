@@ -285,7 +285,6 @@ prometheus:
           target_label: kubernetes_pod_name
 
 grafana:
-  adminPassword: stones
   service:
     loadBalancerIP: ""
     type: ClusterIP

@@ -5,11 +5,13 @@ Kubernetes cluster. The Prometheus helm chart deploys the `node_exporter` and
 `kube-state-metrics` to expose cluster metrics. The Grafana helm chart comes
 with useful dashboards preconfigured.
 
+![dashboard](docs/images/dashboard.png)
+
 ## Install
 
 ```
 cd ~/workspace/charts-grafana
-helm install .
+helm install . --name cluster-health --namespace observability
 ```
 
 ## Prerequisites
@@ -20,9 +22,41 @@ The following commands may need to be executed for helm to function correctly.
 
 ```
 kubectl create serviceaccount --namespace kube-system tiller
-kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+kubectl create clusterrolebinding tiller-cluster-rule
+--clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 helm init --service-account tiller
 ```
+
+## Port Forwarding
+
+__Grafana__
+1. Create the port forward to the Grafana dashboard
+    ```bash
+    kubectl port-forward deployment/cluster-health-grafana 3000:3000
+--namespace observability
+    ```
+1. Retrieve the grafana dashboard password by running the following
+    ```bash
+    # Assuming you are on a Mac OSX
+    kubectl get secret cluster-health-grafana --namespace observability
+--output json | jq -r '.data."admin-password"' | base64 --decode
+    ```
+1. Open your browser window and go to http://localhost:3000
+1. Enter the username `admin` and the previously retreieved password.
+
+__Prometheus__
+1. Create the port forward to the Prometheus dashboard
+    ```
+    kubectl port-forward deployment/cluster-health-prometheus-server 9090:9090
+--namespace observability
+    ```
+1. Open your browser window and go to http://localhost:9090
+
+## Setting the default dashboard
+
+1. Star the dashboard
+1. Go to Preferences
+1. Set the default dashboard
 
 ## Installation Caveats
 
