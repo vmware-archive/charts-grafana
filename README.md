@@ -51,12 +51,10 @@ __Prometheus__
 
 ## Setting the default dashboard
 
-1. Open the dashboard on the top left and star the dashboard
-![open-home](docs/images/default-1.png)
-1. Go to Preferences
-![open-pref](docs/images/default-2.png)
+1. Open the dashboard on the top left
+1. Star the dashboard on the top right
+1. Go to Configuration -> Preferences
 1. Set the default dashboard
-![set-default](docs/images/default-3.png)
 
 ## Installation Caveats
 
