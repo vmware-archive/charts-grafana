@@ -19,3 +19,8 @@
 .project
 .idea/
 *.tmproj
+
+# Project
+docs/*
+README.md
+LICENSE
