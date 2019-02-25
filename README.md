@@ -7,13 +7,6 @@ with useful dashboards preconfigured.
 
 ![dashboard](docs/images/dashboard.png)
 
-## Install
-
-```
-cd ~/workspace/charts-grafana
-helm install . --name cluster-health --namespace observability
-```
-
 ## Prerequisites
 
 ### Configure Helm
@@ -21,11 +14,19 @@ helm install . --name cluster-health --namespace observability
 The following commands may need to be executed for helm to function correctly.
 
 ```
-kubectl create serviceaccount --namespace kube-system tiller
+kubectl create serviceaccount --namespace kube-system tiller \
 kubectl create clusterrolebinding tiller-cluster-rule
 --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 helm init --service-account tiller
 ```
+
+## Install
+
+```
+cd ~/workspace/charts-grafana
+helm install . --name cluster-health --namespace observability
+```
+
 
 ## Port Forwarding
 
