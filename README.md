@@ -31,14 +31,14 @@ helm install . --name cluster-health --namespace observability
 ## Port Forwarding
 
 __Grafana__
-1. Create the port forward to the Grafana dashboard
-    ```bash
-    kubectl port-forward deployment/cluster-health-grafana 3000:3000 --namespace observability
-    ```
 1. Retrieve the grafana dashboard password by running the following
     ```bash
     # Assuming you are on a Mac OSX
     kubectl get secret cluster-health-grafana --namespace observability --output json | jq -r '.data."admin-password"' | base64 --decode
+    ```
+1. Create the port forward to the Grafana dashboard
+    ```bash
+    kubectl port-forward deployment/cluster-health-grafana 3000:3000 --namespace observability
     ```
 1. Open your browser window and go to http://localhost:3000
 1. Enter the username `admin` and the previously retreieved password.
