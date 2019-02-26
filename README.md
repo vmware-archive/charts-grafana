@@ -3,11 +3,15 @@
 This repo contains helm charts to deploy Prometheus and Grafana to your
 Kubernetes cluster. The Prometheus helm chart deploys the `node_exporter` and
 `kube-state-metrics` to expose cluster metrics. The Grafana helm chart comes
-with useful dashboards preconfigured.
+with useful dashboards preconfigured. It also contains Pod Security Policies
+and is intended to work with no additional configuration for version of
+Pivotal Container Services 1.4+. It will also work with clusters from all
+major cloud providers. 
 
 ![dashboard](docs/images/dashboard.png)
 
 ## Prerequisites
+
 
 ### Configure Helm
 
