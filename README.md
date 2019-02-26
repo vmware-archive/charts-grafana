@@ -44,7 +44,7 @@ __Grafana__
     ```bash
     kubectl port-forward deployment/cluster-health-grafana 3000:3000 --namespace observability
     ```
-1. Open your browser window and go to http://localhost:3000
+1. Open your browser window and go to [http://localhost:3000][dashboard-deeplink]
 1. Enter the username `admin` and the previously retrieved password.
 
 __Prometheus__
@@ -53,13 +53,6 @@ __Prometheus__
     kubectl port-forward deployment/cluster-health-prometheus-server 9090:9090 --namespace observability
     ```
 1. Open your browser window and go to http://localhost:9090
-
-## Setting the default dashboard
-
-1. Open the dashboard on the top left
-1. Star the dashboard on the top right
-1. Go to Configuration -> Preferences
-1. Set the default dashboard
 
 ## Installation Caveats
 
@@ -87,3 +80,4 @@ enabled.
 [run with user id 472]: http://docs.grafana.org/installation/docker/#migration-from-a-previous-version-of-the-docker-container-to-5-1-or-later
 [security-context-deny]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#securitycontextdeny
 [pod-sec-policy]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/
+[dashboard-deeplink]: http://localhost:3000/d/JABGX_-mz/kubernetes-cluster-monitoring-via-prometheus?refresh=10s&orgId=1
