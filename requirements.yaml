@@ -1,8 +1,0 @@
----
-dependencies:
-  - name: "grafana"
-    version: "1.17.5"
-    repository: "@stable"
-  - name: "prometheus"
-    version: "7.4.1 "
-    repository: "@stable"
